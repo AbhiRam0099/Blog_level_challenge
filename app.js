@@ -34,10 +34,26 @@ app.get("/contact",function(req,res){
   res.render("contact",{contactContent:contactContent});
 });
 
-app.get("/compose",function(req,res){
+app.get("/login",(req,res) =>
+    {
+      res.render("login")
+    }); 
 
-  res.render("compose");
-});
+app.get("/list",(req,res) =>
+    {
+      res.render("list")
+    }); 
+
+ 
+ 
+ 
+ 
+    app.get("/compose",(req,res) =>
+    {
+      res.render("compose")
+    }); 
+
+
 
 app.post("/compose",function(req,res){
   const post={
@@ -46,6 +62,8 @@ content:req.body.postBody};
 posts.push(post);
 res.redirect("/");
 });
+
+
 
 app.get('/post/:postname', function(req, res){
 const requestedTitle=_.lowerCase(req.params.postname);
@@ -58,13 +76,6 @@ posts.forEach(function(post){
   });
 });
 
-
-
-
-
-
-
-
-app.listen(3000, function() {
-  console.log("Server started on port 3000");
+app.listen(5000, function() {
+  console.log("Server started on port 5000");
 });
